@@ -1,0 +1,22 @@
+{
+  "name": "pratos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome_prato": {
+      "type": "string",
+      "required": true
+    },
+    "preco": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
