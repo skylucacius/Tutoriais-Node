@@ -5,6 +5,7 @@ logger = require('./logger')
 const escrevente = new logger.Escrevente
 const escreve = logger.escreve
 const http = require('http')
+
 // escreve(`Memória livre: ${(os.freemem()*1e-9).toFixed(2)} GB`)
 // escreve(`Memória total: ${(os.totalmem()*1e-9).toFixed(2)} GB`)
 
@@ -24,6 +25,18 @@ const http = require('http')
 // })
 // escrevente.escreve('evento 1')
 
-const server = http.createServer()
+const server = http.createServer((req,res) =>
+{
+    if (req.url === '/') {
+        res.write(JSON.stringify([1,2,3]))
+        res.end()
+    }
+    
+}
+)
 server.listen(3000)
+server.on('connection', (socket) => {
+    escreve('nova conexão')
+})
+
 escreve('Ouvindo a porta 3000...')
