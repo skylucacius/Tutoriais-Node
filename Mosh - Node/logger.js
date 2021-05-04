@@ -1,5 +1,18 @@
-var url = 'teste'
+const EventEmitter = require('events')
 
-var escreve = (arg) => {console.log(arg)}
+class Escrevente extends EventEmitter {
+    escreve (arg) {
+        console.log(arg)
+        this.emit('evento 1', 
+        {id: 3, texto: 'texto de teste'}
+        // arg
+        )
+    }
+ }
 
-module.exports = escreve
+function escreve(arg) {
+    console.log(arg)
+}
+
+module.exports.Escrevente = Escrevente
+module.exports.escreve = escreve
