@@ -1,16 +1,16 @@
 import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import { v4 as uuid } from "uuid"
 
-@Entity()
+@Entity("users")
 class User {
     @PrimaryColumn()
     readonly id: string;
 
     @Column()
-    email: string;
+    name: string;
 
     @Column()
-    name: string;
+    email: string;
 
     @Column()
     admin: boolean;
