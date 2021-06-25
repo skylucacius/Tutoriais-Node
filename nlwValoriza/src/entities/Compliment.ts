@@ -30,7 +30,7 @@ export class Compliment {
     tagId: Tag;
 
     @Column()
-    messsage: string;
+    message: string;
 
     @CreateDateColumn()
     created_at: Date;

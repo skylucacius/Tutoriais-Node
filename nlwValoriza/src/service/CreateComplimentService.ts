@@ -1,3 +1,4 @@
+import { response } from "express";
 import { getCustomRepository } from "typeorm";
 import { Compliment } from "../entities/Compliment";
 import { ComplimentRepository } from "../repositories/ComplimentRepository";
@@ -17,11 +18,11 @@ export class CreateComplimentService {
 
         if (user_sender === user_receiver) throw new Error("Receptor é igual ao emissor!")
 
-        const userReceiverExists = userRepository.findOne({})
+        const userReceiverExists = await userRepository.findOne({})
 
         if (!userReceiverExists) throw new Error("Receptor inválido!")
 
-        const compliment = new Compliment();compliment.messsage = message;compliment.tag_id = tag_id; compliment.user_sender = user_sender; compliment.user_receiver = user_receiver
+        const compliment = new Compliment();compliment.message = message;compliment.tag_id = tag_id; compliment.user_sender = user_sender; compliment.user_receiver = user_receiver
         await complimentRepository.save(compliment)
         return compliment
     }
